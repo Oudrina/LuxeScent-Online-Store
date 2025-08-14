@@ -91,6 +91,10 @@ Admin Module: Allows admins to add/edit/delete products, view orders, and update
 # Use case
 <img width="1177" height="1376" alt="Use case diagram" src="https://github.com/user-attachments/assets/eaf83cb0-edd6-4f1e-873d-971eae81ae7e" />
 
+# Class Diagram 
+<img width="2534" height="1842" alt="Blank diagram - Page 1" src="https://github.com/user-attachments/assets/55b1e25f-0b76-40c3-912f-522d3aeec2c5" />
+
+
 
 
 
