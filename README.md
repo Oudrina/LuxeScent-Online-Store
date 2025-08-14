@@ -12,7 +12,7 @@ An elegant online perfume store where customers can browse, search, and purchase
 * Secure payment processing
 * Easy product management for the owner
 
----
+
 
 ## **2. Tech Stack**
 
@@ -22,7 +22,7 @@ An elegant online perfume store where customers can browse, search, and purchase
 * **Payments:** PayPal, Mobile Money (via API)
 * **Hosting:** Apache Tomcat (backend), domain hosting for frontend
 
----
+
 
 ## **3. Core Features**
 
@@ -34,7 +34,7 @@ An elegant online perfume store where customers can browse, search, and purchase
 * User registration & login
 * Admin dashboard (manage products & orders)
 
----
+
 
 ## **4. Pages & Navigation**
 
@@ -47,7 +47,7 @@ An elegant online perfume store where customers can browse, search, and purchase
 7. **Admin Dashboard**
 8. **Contact/About**
 
----
+
 
 ## **5. Database Design**
 
@@ -59,7 +59,7 @@ An elegant online perfume store where customers can browse, search, and purchase
 * Order\_Items (id, order\_id, product\_id, quantity, price)
 * Categories (id, name)
 
----
+
 
 ## **6. System Flow**
 
@@ -67,7 +67,7 @@ An elegant online perfume store where customers can browse, search, and purchase
 
 **Admin:** Login → Manage Products → View Orders → Update Status
 
----
+
 
 ## **7. Design Style**
 
@@ -75,7 +75,7 @@ An elegant online perfume store where customers can browse, search, and purchase
 * Fonts: Elegant serif for headings, clean sans-serif for body text
 * Layout: Minimal, centered, high-quality perfume images
 
----
+
 
 ## **8. Development Plan**
 
@@ -90,4 +90,4 @@ An elegant online perfume store where customers can browse, search, and purchase
 **Week 5:** Integrate payment gateway
 **Week 6:** Testing, bug fixes, and launch
 
----
+
