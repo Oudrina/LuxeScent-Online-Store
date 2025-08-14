@@ -1,5 +1,4 @@
 # LuxeScent Online Store
----
 
 ## **1. Project Vision**
 
