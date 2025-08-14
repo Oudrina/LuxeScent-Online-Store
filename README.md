@@ -84,9 +84,13 @@ Admin Module: Allows admins to add/edit/delete products, view orders, and update
 
 ## **6. System Flow**
 
+
 **User:** Browse → Add to Cart → Checkout → Payment → Order Confirmation
 
 **Admin:** Login → Manage Products → View Orders → Update Status
+# Use case
+<img width="1177" height="1376" alt="Use case diagram" src="https://github.com/user-attachments/assets/eaf83cb0-edd6-4f1e-873d-971eae81ae7e" />
+
 
 
 
