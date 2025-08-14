@@ -1,5 +1,4 @@
-Got it — let’s simplify the documentation and align it to **Java backend** and **HTML/CSS/JavaScript frontend**. Here’s the updated structure:
-
+# LuxeScent Online Store
 ---
 
 ## **1. Project Vision**
