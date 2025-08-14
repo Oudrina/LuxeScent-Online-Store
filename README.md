@@ -48,6 +48,27 @@ An elegant online perfume store where customers can browse, search, and purchase
 8. **Contact/About**
 
 
+# **5 Application Layer (Backend in Java)**
+
+Technologies: Spring Boot
+
+Purpose: Handles business logic, interacts with the database, manages sessions, processes payments.
+
+**Modules:**
+
+Authentication Module: Handles user login, registration, and session management.
+
+Product Module: Manages product listing, details, and filtering.
+
+Cart Module: Stores cart items, updates quantities, and calculates totals.
+
+Order Module: Processes orders, stores order details, updates status.
+
+Payment Module: Integrates PayPal/Mobile Money APIs, handles transactions.
+
+Admin Module: Allows admins to add/edit/delete products, view orders, and update statuses.
+
+
 
 ## **5. Database Design**
 
