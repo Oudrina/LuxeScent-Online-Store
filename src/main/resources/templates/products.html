@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+
+    <title>Product Page</title>
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body{
+    width: 100%;
+    min-width: 1000px;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 1em;
+}
+nav a{
+  margin-left: 1.5em;
+  text-decoration: none;
+  color: white;
+  font-size: 1.1rem;
+}
+h3{
+    font-size:2.5rem;
+}
+.icons span{
+    font-size: 1.11rem;
+    color: aliceblue;
+    text-decoration: none;
+    margin-right: 1.4em;
+}
+
+.cartButton {
+
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+column-gap: 50px;
+}
+
+.searchAndCategories{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 2em;
+}
+
+.searchAndCategories .categories input{
+    width: 200px;
+    border-radius: 6px;
+    outline: none;
+    border: none;
+    border: 1px solid gainsboro;
+    padding: .4em;
+
+}
+.searchAndCategories .search-product input{
+ width: 500px;
+    border-radius: 6px;
+    outline: none;
+    border: none;
+    border: 1px solid gainsboro;
+    padding: .4em;
+
+}
+
+
+
+
+
+
+.product-wrapper{
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 2em;
+    padding: 1em;
+}
+  .product img{
+    height: 150px;
+    width: 200px;
+    object-fit: cover;
+
+}
+
+.product{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    padding: 1em;
+    border-radius: 5px;
+    transition: all ease .4s;
+    margin-top: 1.5em;
+}
+
+.product:hover{
+  transform:translateY(-10px);
+  cursor: pointer;
+
+}
+.icons .quantity{
+    position: absolute;
+    left: 92.5%;
+    top: 20px;
+    font-size: .6rem;
+    background-color: red;
+    padding: 2px 5px;
+    border-radius: 50%;
+    text-align: center;
+
+}
+
+
+
+aside{
+      width: 300px;
+      background-color: #333;
+      height: 100vh;
+      top: 4em;
+      right: 0;
+      position:fixed;
+      display: none;
+      transition:0.7s;
+      z-index: 100;
+      padding: 1.2em;
+    }
+
+    aside.visible{
+      display: block;
+      transform: translateX(5px);
+    }
+
+    .myCart{
+
+      text-align: center;
+      margin-top: 2em;
+      color: aliceblue;
+      margin-bottom: 2em;
+    }
+
+    .cartItem{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      align-content:  center;
+      background-color: ghostwhite;
+      padding: 1em;
+      border-radius: 6px;
+    }
+
+    .cartItem img{
+      height: 100px;
+      border-radius: 5px;
+
+    }
+
+    .total{
+      margin-top: 20px;
+      display: flex;
+      justify-content: flex-end;
+      border-top: 1px solid white;
+      color: whitesmoke;
+    }
+    .checkout button{
+      display: block;
+      margin-top: 20px;
+  margin: auto;
+      background-color: none;
+      border-radius: 5px;
+      padding: .2em 1em;
+      border: none;
+      background-color: rgb(67, 175, 67);
+      color: white;
+    }
+
+    .productIcons button{
+      border:  none;
+      background-color: transparent;
+      background-color: white;
+      border-radius: 5px;
+    }
+
+    .productIcons i {
+      color: grey;
+    }
+
+    .removeItem button{
+      border: none;
+      background-color: black;
+      border-radius: 4px;
+      padding: .3em;
+      color: white;
+    }
+
+    .cartDetails .name{
+
+      font-size: 15px;
+      font-weight: 500;
+      margin-top: -5px;
+    }
+
+    .cartDetails .price{
+      margin-top: -5px;
+    }
+
+
+
+ .product-description .name{
+    font-size: 1.2rem;
+    color: #212121;
+}
+ .product-description .price{
+    font-size: 1.11rem;
+    color: black;
+ }
+ .cartButton {
+    border-radius: 6px;
+    padding: .3em;
+    width: 100%;
+    transition: all ease .3s;
+      text-align: center;
+
+}
+
+.cartButton .hrt{
+    color:gray;
+}
+
+ .cartButton .hrt.liked{
+    color: red;
+}
+
+.cartButton a {
+    font-size: 1.2rem;
+    color: white;
+    text-decoration: none;
+    text-align: right;
+}
+
+
+
+
+
+
+
+.cartItem{
+    width: 100%;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+}
+.cartItem img{
+    height: 60px;
+}
+.footer{
+    background-color: black;
+    width: 100%;
+    margin-top: 10em;
+    padding: 6em;
+    display: flex;
+    justify-content: space-around;
+}
+.footer p {
+  color: white;
+}
+
+
+</style>
+</head>
+<body>
+<header>
+
+    <nav>
+        <a href="">Home</a>
+        <a href="">Shop</a>
+        <a href="">Contact</a>
+        <a href="">About Us</a>
+    </nav>
+
+    <h3 class="logo">Logo</h3>
+
+    <div class="icons " >
+        <span><i class='bx bx-sun' ></i></span>
+        <span class="cartIcon"><i class='bx bx-cart'></i>
+              <span class="quantity">0</span>
+              </span>
+        <span><i class='bx bx-user'></i></span>
+
+    </div>
+</header>
+
+<!-- Categoeries in Perfume -->
+
+
+<div class="searchAndCategories">
+    <div class="categories">   <input type="search" name="category" id="" placeholder="Categoeries.."> </div>
+    <div class="search-product"> <input type="search" name="products" id="" placeholder="Search Products.."> </div>
+
+</div>
+
+
+<div class="product-wrapper">
+    <div class="product" th:each=" product : ${products}">
+        <img th:src="${product.imageUrl}" alt="Product1" >
+        <div class="product-description">
+            <a href="productDetail.html">
+            <span class="name" th:text="${product.name}">Perfume</span>
+            </a><br>
+            <span class="price" th:text="${product.price}">$400.0</span>
+
+        </div>
+        <div class="cartButton">
+            <div class="hrt">
+                <span><i class='bx bxs-heart'></i></span>
+            </div>
+
+            <div class="cart">
+                <span><i class='bx bx-cart-alt addCart'></i></span>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Product -->
+
+    <div class="product">
+        <img src="images/product2.webp" alt="Product2">
+        <div class="product-description">
+            <span class="name">Perfume</span><br>
+            <span class="price">$400.0</span>
+
+        </div>
+        <div class="cartButton">
+            <div class="hrt">
+                <span><i class='bx bxs-heart'></i></span>
+            </div>
+
+            <div class="cart">
+                <span><i class='bx bx-cart-alt addCart'></i></span>
+
+            </div>
+        </div>
+    </div>
+
+    <!--  //Third product -->
+    <div class="product">
+        <img src="images/product3.jpg" alt="Product3">
+        <div class="product-description">
+            <span class="name">Perfume</span><br>
+            <span class="price">$400.0</span>
+
+        </div>
+        <div class="cartButton">
+            <div class="hrt">
+                <span><i class='bx bxs-heart'></i></span>
+            </div>
+
+            <div class="cart">
+                <span><i class='bx bx-cart-alt addCart'></i></span>
+
+            </div>
+        </div>
+    </div>
+    <!-- Fourth product -->
+    <div class="product">
+        <img src="images/product4.jpg" alt="Product4">
+        <div class="product-description">
+                <span class="name">
+                    <a href="productDetail.html">Perfume</a></span><br>
+            <span class="price">$400.0</span>
+
+        </div>
+        <div class="cartButton">
+            <div class="hrt">
+                <span><i class='bx bxs-heart'></i></span>
+            </div>
+
+            <div class="cart">
+                <span><i class='bx bx-cart-alt addCart'></i></span>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- fifth Product -->
+    <div class="product">
+        <img src="images/product5.jpg" alt="Product5">
+        <div class="product-description">
+            <span class="name">Perfume</span><br>
+            <span class="price">$400.0</span>
+
+        </div>
+        <div class="cartButton">
+            <div class="hrt">
+                <span><i class='bx bxs-heart'></i></span>
+            </div>
+
+            <div class="cart">
+                <span><i class='bx bx-cart-alt addCart'></i></span>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="product">
+        <img src="images/product6.jpg" alt="Product6">
+        <div class="product-description">
+            <span class="name">Perfume</span><br>
+            <span class="price">$400.0</span>
+
+        </div>
+        <div class="cartButton">
+            <div class="hrt">
+                <span><i class='bx bxs-heart'></i></span>
+            </div>
+
+            <div class="cart">
+                <span><i class='bx bx-cart-alt addCart'></i></span>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="product">
+        <img src="images/product7.jpg" alt="Product7">
+        <div class="product-description">
+            <span class="name">Perfume</span><br>
+            <span class="price">$400.0</span>
+
+        </div>
+        <div class="cartButton">
+            <div class="hrt">
+                <span><i class='bx bxs-heart'></i></span>
+            </div>
+
+            <div class="cart">
+                <span><i class='bx bx-cart-alt addCart'></i></span>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="product">
+        <img src="images/product8.jpg" alt="Product8">
+        <div class="product-description">
+            <span class="name">Perfume</span><br>
+            <span class="price">$400.0</span>
+
+        </div>
+        <div class="cartButton">
+            <div class="hrt">
+                <span><i class='bx bxs-heart'></i></span>
+            </div>
+
+            <div class="cart">
+                <span><i class='bx bx-cart-alt addCart'></i></span>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="product">
+        <img src="images/product9.jpg" alt="Product9">
+        <div class="product-description">
+            <span class="name">Perfume</span><br>
+            <span class="price">$400.0</span>
+
+        </div>
+        <div class="cartButton">
+            <div class="hrt">
+                <span><i class='bx bxs-heart'></i></span>
+            </div>
+
+            <div class="cart">
+                <span><i class='bx bx-cart-alt addCart'></i></span>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="product">
+        <img src="images/product10.jpg" alt="Product10">
+        <div class="product-description">
+            <span class="name">Perfume</span><br>
+            <span class="price">$400.0</span>
+
+        </div>
+        <div class="cartButton">
+            <div class="heart">
+                <span class="hrt"><i class='bx bxs-heart'></i></span>
+            </div>
+
+            <div class="cart">
+                <span><i class='bx bx-cart-alt addCart' ></i></span>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+
+    <p>&copy; 2025 ShopEase. All Rights Reserved.</p>
+    <div class="contact">
+        <h6>Contactus</h6>
+        <p>0542885742</p>
+        <p>0542885742</p>
+
+
+    </div>
+
+</footer>
+<script>
+    let  cart = document.querySelector(".cartIcon");
+  let sidebar = document.querySelector(".sidebar");
+
+  cart.addEventListener("click",function(){
+    sidebar.classList.toggle("visible");
+  })
+</script>
+</body>
+</html>

@@ -67,7 +67,7 @@ public class DataSeeder implements CommandLineRunner {
         Philosophy.setDescription("  Body philosophy");
         Philosophy.setCategory(Oriental);
         Philosophy.setPrice(109.99);
-        Philosophy.setImageUrl("https://placehold.co/600x400");
+        Philosophy.setImageUrl("images/product1.png");
 
         productRepository.saveAll(Arrays.asList(Lavender,Victoria,Philosophy));
 
